@@ -34,8 +34,7 @@ class TodoRepository {
         };
         return this.model.findOneAndUpdate(query, {
             $set: {
-                name: object.name,
-                isDone: object.done
+                isDone: object.isDone
             }
         });
     }

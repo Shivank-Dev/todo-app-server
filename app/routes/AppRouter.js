@@ -33,22 +33,23 @@ class AppRouter {
                 const {
                     name
                 } = req.body;
+                console.log("name ", name);
                 const todo = await repository.create(name);
                 res.json(todo);
             } catch (error) {
+                console.log("error ", error);
                 res.sendStatus(500);
             }
         });
 
         // delete todo item from the db
 
-        this.app.delete('deleteTodo/:id', async (req, res) => {
+        this.app.delete('/deleteTodo/:id', async (req, res) => {
             try {
                 const {
                     id
                 } = req.params;
                 const todo = await repository.deleteById(id);
-                console.log("todo inside delete ", todo)
                 res.status(200).json([]);
             } catch (error) {
                 console.error("error ", error);
@@ -58,16 +59,13 @@ class AppRouter {
 
         // update todo item from the db
         this.app.put('/updateTodo/:id', async (req, res) => {
+            console.log("req body ", req.body);
             try {
-                const {
-                    id
-                } = req.params;
+                const {id}  = req.params;
                 const todo = {
-                    name: req.body.name,
                     isDone: req.body.isDone
                 }
                 const updateTodo = await repository.updateById(id, todo);
-                console.log("updateTodo inside update ", updateTodo)
                 res.status(200).json([])
             } catch (error) {
                 console.log("error ", error);
