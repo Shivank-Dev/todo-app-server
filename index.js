@@ -22,7 +22,5 @@ app.use(cors());
 
 new AppRouter(app).initRoutes();
 
-const server = app.listen(5000, () => {
-    const port = server.address().port;
-    console.log("Server is listening on port %d in %s mode", port, app.settings.env);
-})
+const port = process.env.PORT || 5000;
+console.log("Server is listening on port %d in %s mode", port);
