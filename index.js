@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const AppRouter = require('./app/routes/AppRouter');
 
 dotenv.config();
 const app = express();
@@ -19,10 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/ping', (req, res) => {
-    res.send(new Date());
-});
-
+new AppRouter(app).initRoutes();
 
 const server = app.listen(5000, () => {
     const port = server.address().port;

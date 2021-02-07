@@ -8,7 +8,7 @@ const todoSchema = new Schema({
     name: {
         type: String
     },
-    done: {
+    isDone: {
         type: Boolean,
     },
 });
