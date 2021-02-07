@@ -30,10 +30,7 @@ class AppRouter {
 
         this.app.post('/addTodo', async (req, res) => {
             try {
-                const {
-                    name
-                } = req.body;
-                console.log("name ", name);
+                const {name} = req.body;
                 const todo = await repository.create(name);
                 res.json(todo);
             } catch (error) {
@@ -46,9 +43,7 @@ class AppRouter {
 
         this.app.delete('/deleteTodo/:id', async (req, res) => {
             try {
-                const {
-                    id
-                } = req.params;
+                const {id} = req.params;
                 const todo = await repository.deleteById(id);
                 res.status(200).json([]);
             } catch (error) {
@@ -63,7 +58,7 @@ class AppRouter {
             try {
                 const {id}  = req.params;
                 const todo = {
-                    isDone: req.body.isDone
+                    name: req.body.name
                 }
                 const updateTodo = await repository.updateById(id, todo);
                 res.status(200).json([])

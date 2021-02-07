@@ -9,7 +9,7 @@ class TodoRepository {
     create(name) {
         const newTodo = {
             name,
-            isDone: false
+            creationDate: new Date()
         };
         const todo = new this.model(newTodo);
 
@@ -34,7 +34,7 @@ class TodoRepository {
         };
         return this.model.findOneAndUpdate(query, {
             $set: {
-                isDone: object.isDone
+                name: object.name
             }
         });
     }

@@ -8,9 +8,9 @@ const todoSchema = new Schema({
     name: {
         type: String
     },
-    isDone: {
-        type: Boolean,
-    },
+    creationDate: {
+        type: String
+    }
 });
 
 const Todo = mongoose.model('Todo', todoSchema);
